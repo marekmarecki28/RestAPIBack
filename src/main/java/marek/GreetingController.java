@@ -16,6 +16,6 @@ public class GreetingController {
 	@RequestMapping("/greet")
 	public Greeting greet(@RequestParam(value="name", defaultValue="Maro") String name)
 	{
-		return new Greeting(counter.incrementAndGet(), "Hello: " + name);
+		return new Greeting(counter.incrementAndGet(), "Hello!: " + name);
 	}
 }
