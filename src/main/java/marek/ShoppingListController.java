@@ -3,15 +3,19 @@ package marek;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import marek.components.ResponseTransfer;
 import marek.model.Item;
 import marek.services.ItemService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ShoppingListController {
 	
@@ -25,13 +29,17 @@ public class ShoppingListController {
 	}
 	
 	@RequestMapping(value="/list/add", method = RequestMethod.POST)
-	@ResponseBody
-	public String addItemToList(@RequestBody Item itemToBuy) 
+	public ResponseTransfer addItemsToList(@RequestBody Item item) 
 	{
-		System.out.println(itemToBuy.getName());
-		System.out.println(itemToBuy.getQuantity());
-		
-		return "Added!";
+		itemService.add(item);
+		return new ResponseTransfer("Added items");
+	}
+	
+	@RequestMapping(value="/list/remove", method = RequestMethod.DELETE)
+	public ResponseTransfer removeItem(@RequestParam Long id)
+	{
+		itemService.remove(id);
+		return new ResponseTransfer("Item removed");
 	}
 	
 }

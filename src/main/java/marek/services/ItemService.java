@@ -18,5 +18,15 @@ public class ItemService {
 	{
 		return itemRepository.findAll();
 	}
+	
+	public void add(Item item)
+	{
+		itemRepository.save(item);
+	}
+	
+	public void remove(Long id)
+	{
+		itemRepository.deleteById(id);
+	}
 
 }
