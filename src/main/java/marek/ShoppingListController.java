@@ -23,15 +23,15 @@ public class ShoppingListController {
     private ItemService itemService;
 
 	@RequestMapping(value = "/list/all", method = RequestMethod.GET)
-	public List<Item> getAllItems()
+	public List<Item> getAllItems(@RequestParam Long id)
 	{
-		return itemService.list();
+		return itemService.list(id);
 	}
 	
 	@RequestMapping(value="/list/add", method = RequestMethod.POST)
-	public ResponseTransfer addItemsToList(@RequestBody Item item) 
+	public ResponseTransfer addItemsToList(@RequestBody List<Item> items) 
 	{
-		itemService.add(item);
+		itemService.addItems(items);
 		return new ResponseTransfer("Added items");
 	}
 	

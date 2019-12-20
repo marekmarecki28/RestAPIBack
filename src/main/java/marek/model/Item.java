@@ -12,7 +12,8 @@ public class Item {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;	
+    private Long itemId;	
+	private Long listId;
 	private String name;
 	private int quantity;
 	
@@ -20,15 +21,26 @@ public class Item {
 		super();
 	}
 	
+	public Long getListId() {
+		return listId;
+	}
+
+	public void setListId(Long listId) {
+		this.listId = listId;
+	}
+
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public int getQuantity() {
 		return quantity;
 	}
+	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}

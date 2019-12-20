@@ -14,14 +14,14 @@ public class ItemService {
 	@Autowired
 	private ItemRepository itemRepository;
 	
-	public List<Item> list()
+	public List<Item> list(Long id)
 	{
 		return itemRepository.findAll();
 	}
 	
-	public void add(Item item)
+	public void addItems(List<Item> items)
 	{
-		itemRepository.save(item);
+		itemRepository.saveAll(items);
 	}
 	
 	public void remove(Long id)
