@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import marek.model.Item;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Item, Long>{
+public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositoryCustom{
 }

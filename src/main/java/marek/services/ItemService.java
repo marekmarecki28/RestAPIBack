@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import marek.model.Item;
 import marek.repositories.ItemRepository;
+import marek.repositories.ItemRepositoryCustom;
 
 @Service
 public class ItemService {
@@ -16,7 +17,7 @@ public class ItemService {
 	
 	public List<Item> list(Long id)
 	{
-		return itemRepository.findAll();
+		return itemRepository.findAll(id);
 	}
 	
 	public void addItems(List<Item> items)
