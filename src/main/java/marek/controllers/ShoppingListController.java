@@ -28,10 +28,17 @@ public class ShoppingListController {
 		return itemService.list(id);
 	}
 	
-	@RequestMapping(value="/list/add", method = RequestMethod.POST)
+	@RequestMapping(value="/list/addItems", method = RequestMethod.POST)
 	public ResponseTransfer addItemsToList(@RequestBody List<Item> items) 
 	{
 		itemService.addItems(items);
+		return new ResponseTransfer("Added items");
+	}
+	
+	@RequestMapping(value="/list/addItem", method = RequestMethod.POST)
+	public ResponseTransfer addItemToList(@RequestBody Item item)
+	{
+		itemService.addItem(item);
 		return new ResponseTransfer("Added items");
 	}
 	
