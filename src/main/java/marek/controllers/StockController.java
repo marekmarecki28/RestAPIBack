@@ -1,4 +1,4 @@
-package marek;
+package marek.controllers;
 
 import java.util.List;
 
