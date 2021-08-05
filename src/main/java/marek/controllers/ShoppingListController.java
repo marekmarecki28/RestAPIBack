@@ -15,7 +15,7 @@ import marek.components.ResponseTransfer;
 import marek.model.Item;
 import marek.services.ItemService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 public class ShoppingListController {
 	
@@ -32,21 +32,21 @@ public class ShoppingListController {
 	public ResponseTransfer addItemsToList(@RequestBody List<Item> items) 
 	{
 		itemService.addItems(items);
-		return new ResponseTransfer("Added items");
+		return new ResponseTransfer("Added items", 200);
 	}
 	
 	@RequestMapping(value="/list/addItem", method = RequestMethod.POST)
 	public ResponseTransfer addItemToList(@RequestBody Item item)
 	{
 		itemService.addItem(item);
-		return new ResponseTransfer("Added items");
+		return new ResponseTransfer("Added items", 200);
 	}
 	
 	@RequestMapping(value="/list/remove", method = RequestMethod.DELETE)
 	public ResponseTransfer removeItem(@RequestParam Long id)
 	{
 		itemService.remove(id);
-		return new ResponseTransfer("Item removed");
+		return new ResponseTransfer("Item removed", 200);
 	}
 	
 }
